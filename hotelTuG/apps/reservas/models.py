@@ -9,9 +9,9 @@ class Reservas(models.Model):
         ordering = ['-fecha_inicio']
 
     ESTADO_CHOICES = (
-        ('R', 'Reservado'),
-        ('O', 'Ocupado'),
-        ('C', 'Cancelado')
+        ('Pa', 'Pagado'),
+        ('P', 'Pendiente'),
+        ('E', 'Eliminado')
     )
 
     METODO_PAGO_CHOICES = (
@@ -25,7 +25,7 @@ class Reservas(models.Model):
     cliente = models.ForeignKey('clientes.Clientes', on_delete=models.CASCADE)
     fecha_inicio = models.DateField()
     fecha_fin = models.DateField()
-    estado = models.CharField(max_length=1, choices=ESTADO_CHOICES)
     fecha_registro = models.DateField(auto_now_add=True)
+    estado = models.CharField(max_length=2, choices=ESTADO_CHOICES)
     monto = models.DecimalField(max_digits=10, decimal_places=2)
     metodo_pago = models.CharField(max_length=2, choices=METODO_PAGO_CHOICES)
