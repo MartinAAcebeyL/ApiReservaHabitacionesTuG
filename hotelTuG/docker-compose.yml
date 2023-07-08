@@ -10,8 +10,8 @@ services:
     volumes:
       - .:/app
     depends_on:
-      - hotelTuG
-  hotelTuG:
+      - db
+  db:
     image: mysql:8.0.33
     restart: always
     environment:

@@ -67,7 +67,7 @@ DATABASES = {
         'NAME': 'hotelTuG',
         'USER': 'root',
         'PASSWORD': 'root',
-        'HOST': 'hotelTuG',
+        'HOST': 'db',
         'PORT': '3306',
     }
 }
