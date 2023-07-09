@@ -5,11 +5,11 @@ from .views import (
 
 urlpatterns = [
     # login
-    path('login', Login.as_view(), name='auth_client_view'),
+    path('login', Login.as_view(), name="login"),
     # logout
-    path("logout", LogoutView.as_view(), name="logout_clients"),
+    path("logout", LogoutView.as_view(), name="logout"),
     # api
-    path('', ClienteListarCrear.as_view(), name='cliente-list-create'),
+    path('', ClienteListarCrear.as_view(), name='cliente_listar_crear'),
     path('<uuid:pk>', ClientActualizarEliminar.as_view(),
-         name='cliente-retrieve-update-destroy'),
+         name='cliente_actualizar_eliminar'),
 ]

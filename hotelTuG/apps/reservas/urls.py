@@ -3,7 +3,7 @@ from .views import ReservaListar, ReservaListarUno, ReservaCrear, ReservaActuali
 
 urlpatterns = [
     path('', ReservaListar.as_view(), name='reserva-listar'),
-    path('/<int:pk>', ReservaListarUno.as_view(), name='reserva-listar-uno'),
+    path('<int:pk>', ReservaListarUno.as_view(), name='reserva-listar-uno'),
     path('crear/', ReservaCrear.as_view(), name='reserva-crear'),
     path('admin/<int:pk>/', ReservaActualizar.as_view(),
          name='reserva-actualizar'),

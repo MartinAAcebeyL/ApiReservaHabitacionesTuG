@@ -1,4 +1,5 @@
 asgiref==3.7.2
+coverage==7.2.7
 Django==4.2.3
 django-mysql==4.10.0
 djangorestframework==3.14.0

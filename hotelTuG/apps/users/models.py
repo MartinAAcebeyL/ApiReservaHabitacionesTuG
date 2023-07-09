@@ -20,11 +20,11 @@ class User(AbstractBaseUser):
 
     nombre = models.CharField(max_length=50)
     apellido = models.CharField(max_length=50)
-    ci = models.IntegerField()
+    ci = models.IntegerField(blank=True, null=True)
     email = models.EmailField(verbose_name='email',
                               max_length=255, unique=True)
     password = models.CharField(max_length=128)
-    fecha_nacimiento = models.DateField()
+    fecha_nacimiento = models.DateField(blank=True, null=True)
     fecha_registro = models.DateField(auto_now_add=True)
 
     is_staff = models.BooleanField(default=False)

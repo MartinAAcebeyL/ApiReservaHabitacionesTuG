@@ -16,7 +16,6 @@ class ClientsApiSerializer(ModelSerializer):
     def create(self, validated_data):
         password = validated_data.pop('password')
         validated_data['password'] = make_password(password)
-        print(validated_data)
         cliente = Cliente(**validated_data)
         cliente.save()
         return cliente

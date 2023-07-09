@@ -17,7 +17,7 @@ class Login(TokenObtainPairView):
         password = request.data.get('password', '')
 
         cliente = authenticate(request, email=email, password=password)
-        if not cliente:
+        if cliente is None:
             return Response({
                 'message': "Email or password incorrect",
                 'success': False
