@@ -7,6 +7,8 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.tokens import RefreshToken
 from . models import Cliente
 from .serializers import clientTokenObtainPairSerializer, ClientsApiSerializer
+from django.contrib.auth.hashers import make_password
+
 
 class Login(TokenObtainPairView):
     serializer_class = clientTokenObtainPairSerializer
@@ -15,27 +17,26 @@ class Login(TokenObtainPairView):
         email = request.data.get('email', '')
         password = request.data.get('password', '')
 
-        cliente = authenticate(
-            email=email,
-            password=password
-        )
+        cliente = authenticate(request, email=email, password=password)
+        if not cliente:
+            return Response({
+                'message': "Email or password incorrect",
+                'success': False
+            }, status=status.HTTP_401_UNAUTHORIZED)
 
-        if cliente:
-            login_serializer = self.serializer_class(data=request.data)
-            if login_serializer.is_valid():
-                return Response({
-                    'message': "Login successfully",
-                    'success': True,
-                    'data': {
-                        'token': login_serializer.validated_data.get('access'),
-                        'refresh-token': login_serializer.validated_data.get('refresh'),
-                    }
-                }, status=status.HTTP_200_OK)
+        login_serializer = self.serializer_class(data=request.data)
+        login_serializer.is_valid(raise_exception=True)
+
+        tokens = {
+            'token': login_serializer.validated_data.get('access'),
+            'refresh-token': login_serializer.validated_data.get('refresh'),
+        }
 
         return Response({
-            'message': "The client with these credentials does not exist",
-            'success': False
-        }, status=status.HTTP_400_BAD_REQUEST)
+            'message': "Login successfully",
+            'success': True,
+            'data': tokens
+        }, status=status.HTTP_200_OK)
 
 
 class LogoutView(APIView):
@@ -63,8 +64,8 @@ class ClienteListarCrear(generics.ListCreateAPIView):
     serializer_class = ClientsApiSerializer
     lookup_field = 'uuid'
 
-class ClientActualizarEliminar(generics.DestroyAPIView, generics.UpdateAPIView):
+
+class ClientActualizarEliminar(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = (IsAuthenticated,)
     queryset = Cliente.objects.all()
     serializer_class = ClientsApiSerializer
-    lookup_field = 'uuid'

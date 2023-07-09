@@ -1,5 +1,6 @@
 from apps.users.models import User
 
+
 class Cliente(User):
     class Meta:
         db_table = 'clientes'

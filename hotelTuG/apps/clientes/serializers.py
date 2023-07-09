@@ -12,14 +12,11 @@ class ClientsApiSerializer(ModelSerializer):
         model = Cliente
         fields = '__all__'
         read_only_fields = []
-
-    def validate_password(self, value: str) -> str:
-        return make_password(value)
     
     def create(self, validated_data):
-        print(validated_data)
         password = validated_data.pop('password')
         validated_data['password'] = make_password(password)
+        print(validated_data)
         cliente = Cliente(**validated_data)
         cliente.save()
         return cliente
