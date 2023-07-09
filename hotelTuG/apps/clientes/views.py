@@ -7,7 +7,6 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.tokens import RefreshToken
 from . models import Cliente
 from .serializers import clientTokenObtainPairSerializer, ClientsApiSerializer
-from django.contrib.auth.hashers import make_password
 
 
 class Login(TokenObtainPairView):
@@ -62,7 +61,6 @@ class LogoutView(APIView):
 class ClienteListarCrear(generics.ListCreateAPIView):
     queryset = Cliente.objects.all()
     serializer_class = ClientsApiSerializer
-    lookup_field = 'uuid'
 
 
 class ClientActualizarEliminar(generics.RetrieveUpdateDestroyAPIView):

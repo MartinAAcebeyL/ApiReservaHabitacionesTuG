@@ -1,14 +1,10 @@
-from django.urls import path, include
-from rest_framework_simplejwt.views import (
-    TokenRefreshView, TokenVerifyView,
-)
-
+from django.urls import path
 from .views import (
-    Login, LogoutView, ClienteListarCrear, 
+    Login, LogoutView, ClienteListarCrear,
     ClientActualizarEliminar,)
 
 urlpatterns = [
-    #login
+    # login
     path('login', Login.as_view(), name='auth_client_view'),
     # logout
     path("logout", LogoutView.as_view(), name="logout_clients"),

@@ -2,7 +2,7 @@ from rest_framework.serializers import ModelSerializer
 from .models import Habitacion
 
 
-class ClientsApiSerializer(ModelSerializer):
+class HabitacionesApiSerializer(ModelSerializer):
     class Meta:
         model = Habitacion
         fields = '__all__'
