@@ -5,8 +5,9 @@ from django.contrib.auth.hashers import make_password, check_password
 from .managers import CustomUserManager
 
 
-class Users(AbstractBaseUser):
+class User(AbstractBaseUser):
     objects = CustomUserManager()
+
     class Meta:
         db_table = 'users'
         verbose_name = 'Usuario'
@@ -20,7 +21,7 @@ class Users(AbstractBaseUser):
     apellido = models.CharField(max_length=50)
     ci = models.IntegerField()
     email = models.EmailField()
-    password = models.CharField(max_length=50)
+    password = models.CharField(max_length=100)
     fecha_nacimiento = models.DateField()
     fecha_registro = models.DateField(auto_now_add=True)
 
@@ -29,10 +30,3 @@ class Users(AbstractBaseUser):
     is_active = models.BooleanField(default=True)
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
-
-    def save(self, *args, **kwargs):
-        self.password = make_password(self.password)
-        super(Users, self).save(*args, **kwargs)
-
-    def check_password(self, raw_password):
-        return check_password(raw_password, self.password)

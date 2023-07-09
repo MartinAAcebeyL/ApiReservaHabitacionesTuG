@@ -1,9 +1,7 @@
-from django.db import models
-from apps.users.models import Users
+from apps.users.models import User
 
-class Cliente(Users):
+class Cliente(User):
     class Meta:
         db_table = 'clientes'
         verbose_name = 'Cliente'
         verbose_name_plural = 'Clientes'
-        

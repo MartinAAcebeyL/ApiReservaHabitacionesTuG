@@ -4,7 +4,8 @@ from rest_framework_simplejwt.views import (
 )
 
 from .views import (
-    Login, LogoutView)
+    Login, LogoutView, ClienteListarCrear, 
+    ClientActualizarEliminar,)
 
 urlpatterns = [
     path('login', Login.as_view(), name='auth_client_view'),
@@ -12,5 +13,8 @@ urlpatterns = [
     path('login/verify', TokenVerifyView.as_view(), name='token_verify'),
     # logout
     path("logout", LogoutView.as_view(), name="logout_clients"),
-    
+    # api
+    path('', ClienteListarCrear.as_view(), name='cliente-list-create'),
+    path('<uuid:uuid>/', ClientActualizarEliminar.as_view(),
+         name='cliente-retrieve-update-destroy'),
 ]

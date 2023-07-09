@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class Habitaciones(models.Model):
+class Habitacion(models.Model):
     class Meta:
         db_table = 'habitaciones'
         verbose_name = 'Habitacion'

@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class Reservas(models.Model):
+class Reserva(models.Model):
     class Meta:
         db_table = 'reservas'
         verbose_name = 'Reserva'
@@ -21,8 +21,8 @@ class Reservas(models.Model):
     )
 
     habitacion = models.ForeignKey(
-        'habitaciones.Habitaciones', on_delete=models.CASCADE)
-    cliente = models.ForeignKey('clientes.Clientes', on_delete=models.CASCADE)
+        'habitaciones.Habitacion', on_delete=models.CASCADE)
+    cliente = models.ForeignKey('clientes.Cliente', on_delete=models.CASCADE)
     fecha_inicio = models.DateField()
     fecha_fin = models.DateField()
     fecha_registro = models.DateField(auto_now_add=True)

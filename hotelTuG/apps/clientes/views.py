@@ -1,14 +1,13 @@
 from rest_framework_simplejwt.views import TokenObtainPairView
 from django.contrib.auth import authenticate
-from rest_framework import status
-from .serializers import clientTokenObtainPairSerializer, ClientsApiSerializer
+from rest_framework import status, generics
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.tokens import RefreshToken
+from . models import Cliente
+from .serializers import clientTokenObtainPairSerializer, ClientsApiSerializer
 
-
-# Create your views here.
 class Login(TokenObtainPairView):
     serializer_class = clientTokenObtainPairSerializer
 
@@ -41,6 +40,7 @@ class Login(TokenObtainPairView):
 
 class LogoutView(APIView):
     permission_classes = (IsAuthenticated,)
+
     def post(self, request):
         try:
             refresh_token = request.data["refresh_token"]
@@ -56,3 +56,15 @@ class LogoutView(APIView):
                 'success': False,
                 'errors': str(e)
             }, status=status.HTTP_400_BAD_REQUEST)
+
+
+class ClienteListarCrear(generics.ListCreateAPIView):
+    queryset = Cliente.objects.all()
+    serializer_class = ClientsApiSerializer
+    lookup_field = 'uuid'
+
+class ClientActualizarEliminar(generics.DestroyAPIView, generics.UpdateAPIView):
+    permission_classes = (IsAuthenticated,)
+    queryset = Cliente.objects.all()
+    serializer_class = ClientsApiSerializer
+    lookup_field = 'uuid'
