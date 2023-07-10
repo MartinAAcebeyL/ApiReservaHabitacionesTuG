@@ -12,8 +12,19 @@ class HabitacionesListar(generics.ListAPIView):
 
 class HabitacionesListarDisponibles(generics.ListAPIView):
     """listar todas las habitaciones disponibles"""
-    queryset = Habitacion.objects.filter(estado=False)
     serializer_class = HabitacionesApiSerializer
+
+    def get_queryset(self):
+        queryset = Habitacion.objects.filter(estado=False)
+
+        precio_max = self.request.query_params.get('precio_max', None)
+        tipos = self.request.query_params.getlist('tipo[]')
+        
+        if precio_max is not None:
+            queryset = queryset.filter(precio__lte=precio_max)
+        if tipos:
+            queryset = queryset.filter(tipo__in=tipos)
+        return queryset
 
 
 class HabitacionesListarUno(generics.RetrieveAPIView):
