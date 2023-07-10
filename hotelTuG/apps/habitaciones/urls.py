@@ -11,6 +11,6 @@ urlpatterns = [
     path('<int:pk>', HabitacionesListarUno.as_view(),
          name='listar-una-habitaciones'),
     path('admin/<int:pk>/',
-         HabitacionesListarActualizarEliminar.as_view(), name='actualizar-eliminar-habitacion'),
+         HabitacionesListarActualizarEliminar.as_view(), name='actualizar_eliminar_habitacion'),
     path('admin/crear/', HabitacionesCrear.as_view(), name='crear-habitaciones'),
 ]

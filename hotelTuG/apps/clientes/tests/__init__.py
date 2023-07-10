@@ -20,6 +20,7 @@ class TestBase(APITestCase):
             fecha_nacimiento="1999-01-01",
         )
         self.user.save()
+
         request = self.client.post(
             path=self.urls.get("login"),
             data={
@@ -32,4 +33,5 @@ class TestBase(APITestCase):
         self.token = request.data['data']['token']
         self.refresh_token = request.data['data']['refresh-token']
         self.client.credentials(HTTP_AUTHORIZATION='Bearer ' + self.token)
+
         return super().setUp()

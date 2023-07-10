@@ -12,4 +12,3 @@ class TestLogout(TestBase):
         response = self.client.post(self.urls.get("logout"), {}, format='json')
         self.assertEqual(response.status_code, 400)
         self.assertFalse(response.data['success'])
-# coverage run --source='.' manage.py test apps
