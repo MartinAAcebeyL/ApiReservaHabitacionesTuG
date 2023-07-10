@@ -1,0 +1,116 @@
+{
+	"info": {
+		"_postman_id": "aaa2da8d-5c9e-42c8-8972-b346d833479d",
+		"name": "Reservas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18471992"
+	},
+	"item": [
+		{
+			"name": "Listar",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjg4OTI0Njc5LCJpYXQiOjE2ODg5MjQzNzksImp0aSI6ImFmY2VkOTY0MzIzOTRlZGNiODQ0MGQ4NGE5MTk2NjE3IiwidXNlcl9pZCI6IjBkNjk1OGM5LWJmMzUtNDBlYy04OWViLTQ2NzE3OGRiZDk0ZiJ9.VSWCCqzhoYGoU77onzXxZ5_OR2eb8LdcH9wRUTb7nJ4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/3",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjg4OTU5NTg3LCJpYXQiOjE2ODg5NTkyODcsImp0aSI6Ijg3ZmRjYjAzMTY3ZTRlMmI5MzNmOGQ3MDNiYzQ1YTVmIiwidXNlcl9pZCI6IjBkNjk1OGM5LWJmMzUtNDBlYy04OWViLTQ2NzE3OGRiZDk0ZiJ9.RB__0NOL4gwcHLfvCio1GqSgTKc-xVwJZS4SBUul9MY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"fecha_inicio\": \"2024-02-21\",\n    \"fecha_fin\": \"2024-02-15\",\n    \"monto\": 1,\n    \"metodo_pago\": \"E\",\n    \"habitacion\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}crear/",
+					"host": [
+						"{{url}}crear"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "actualizar",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjg4OTI0OTY2LCJpYXQiOjE2ODg5MjQ2NjYsImp0aSI6IjFjNjVhZGQwYzk2YzQ0MzVhYjk3YWMwMTI5MjM5N2U4IiwidXNlcl9pZCI6ImFmMmZjZjQ2LWU3YmEtNGExMi04MzQ0LTM3NGI4ZDg4N2JjOSJ9.sDN05rHakh4veEPoHT56R1TptnvAxy-X2LIdX6Hyvh8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}admin/1/",
+					"host": [
+						"{{url}}admin"
+					],
+					"path": [
+						"1",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "http://localhost:8000/api/v1/reservas/"
+		}
+	]
+}

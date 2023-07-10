@@ -1,0 +1,250 @@
+{
+	"info": {
+		"_postman_id": "dc636d85-ac3f-4c0b-8970-7541b30c5a77",
+		"name": "Clientes",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18471992"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"email\": \"lucas@gmail.com\",\n    \"password\":\"123456\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/v1/clientes/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"clientes",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logout",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjg4OTExMjg4LCJpYXQiOjE2ODg5MTA5ODgsImp0aSI6IjdmMTA4ZmY1YTRlYTQwZDA4MTM2ZTRiN2U1OTE0ZWJhIiwidXNlcl9pZCI6ImQ4NjVmZTNhLTFiNDEtNGY3MS1iODcxLTE3M2YwMzkwNDI1YSJ9.N5LEbVAFbT8YD4Wc-NNrKzjeOCSkUKLbiTmdqjZXPCk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n     \"refresh_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY4ODk5NzM4OCwiaWF0IjoxNjg4OTEwOTg4LCJqdGkiOiI2ODJlZmYyY2EzNWQ0MGFkOWZmOTkxMTA1ZmQxZTMxZCIsInVzZXJfaWQiOiJkODY1ZmUzYS0xYjQxLTRmNzEtYjg3MS0xNzNmMDM5MDQyNWEifQ.6se-o340nT9m8d7teK4iOR_Y9IDyA9A4Zl7FswsUAnU\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/v1/clientes/logout",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"clientes",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\":\"lucas\",\n    \"apellido\":\"lucas\",\n    \"ci\":123456,\n    \"email\":\"\",\n    \"password\":123456,\n    \"fecha_nacimiento\":\"2000-11-30\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/v1/clientes/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"clientes",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjg4OTEwODU0LCJpYXQiOjE2ODg5MTA1NTQsImp0aSI6IjI0MjcxOTMzZWI3ZjRkZTI4NzBhNTBkMmQzNDA2OWM1IiwidXNlcl9pZCI6IjU2OTVkYjgxLTQ0MmEtNDJmNS05MzA1LTZjMDZiMjJjOWMwMyJ9.1vFjD_V5tzFnL2fIkj8hXsG_a_PddUYFULy6Aya2Liw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\":\"Martin 123456\",\n    \"apellido\":\"Acebey\",\n    \"ci\":123456,\n    \"email\":\"martin123@gmail.com\",\n    \"password\":123456,\n    \"fecha_nacimiento\":\"2000-11-30\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/v1/clientes/5695db81-442a-42f5-9305-6c06b22c9c03",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"clientes",
+						"5695db81-442a-42f5-9305-6c06b22c9c03"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/v1/clientes/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"clientes",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar uno",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjg4OTEwODU0LCJpYXQiOjE2ODg5MTA1NTQsImp0aSI6IjI0MjcxOTMzZWI3ZjRkZTI4NzBhNTBkMmQzNDA2OWM1IiwidXNlcl9pZCI6IjU2OTVkYjgxLTQ0MmEtNDJmNS05MzA1LTZjMDZiMjJjOWMwMyJ9.1vFjD_V5tzFnL2fIkj8hXsG_a_PddUYFULy6Aya2Liw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/v1/clientes/5695db81-442a-42f5-9305-6c06b22c9c03",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"clientes",
+						"5695db81-442a-42f5-9305-6c06b22c9c03"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjg4OTE2MTA5LCJpYXQiOjE2ODg5MTU4MDksImp0aSI6IjIzNGIyZTdiODk0NDRiZTBiMDIzZTM0ZmI4MjhiNWY3IiwidXNlcl9pZCI6ImQ4NjVmZTNhLTFiNDEtNGY3MS1iODcxLTE3M2YwMzkwNDI1YSJ9.i_7MmO1ltAcaOA20GtnEJJhWHex5lTy7QYvp_PgaX1M",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}5695db81-442a-42f5-9305-6c06b22c9c03",
+					"host": [
+						"{{url}}5695db81-442a-42f5-9305-6c06b22c9c03"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "http://localhost:8000/api/v1/clientes/"
+		}
+	]
+}

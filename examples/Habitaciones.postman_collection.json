@@ -1,0 +1,76 @@
+{
+	"info": {
+		"_postman_id": "05b097ea-a560-4b23-94d8-5d6473557c84",
+		"name": "Habitaciones",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18471992"
+	},
+	"item": [
+		{
+			"name": "Listar",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}",
+					"host": [
+						"{{url}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{url}}",
+					"host": [
+						"{{url}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar disponibles",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/disponibles?tipo[]=S&tipo[]=Su",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"disponibles"
+					],
+					"query": [
+						{
+							"key": "precio_max",
+							"value": "150",
+							"disabled": true
+						},
+						{
+							"key": "tipo[]",
+							"value": "S"
+						},
+						{
+							"key": "tipo[]",
+							"value": "Su"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "http://localhost:8000/api/v1/habitaciones"
+		}
+	]
+}
