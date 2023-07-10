@@ -10,7 +10,6 @@ class HabitacionesBaseTest(APITestCase):
     def setUp(self):
         self.urls = {
             'listar': reverse('listar-habitaciones'),
-            'disponibles': reverse('listar-habitaciones-disponibles'),
             'crear': reverse('crear-habitaciones'),
             "login": reverse("login"),
         }
