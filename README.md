@@ -1,4 +1,4 @@
-# ApiReservaHabitacionesTuG
+# ApiReservaHabitaciones
 
 ## Descripcion
 
