@@ -1,4 +1,3 @@
-version: '2'
 services:
   backend:
     container_name: hotel_backend
