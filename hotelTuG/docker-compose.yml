@@ -1,23 +1,33 @@
 version: '3.8'
 services:
   backend:
+    container_name: hotel_backend
     build: 
       context: .
       dockerfile: Dockerfile
-    command: 'python manage.py runserver 0.0.0.0:8000'
+    command: >
+      sh -c "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
     ports:
       - 8000:8000
     volumes:
       - .:/app
     depends_on:
-      - db
+      db:
+        condition: service_healthy
+  
   db:
+    container_name: hotel_db
     image: mysql:8.0.33
-    restart: always
     environment:
       MYSQL_DATABASE: admin
       MYSQL_ROOT_PASSWORD: root
     volumes:
       - ./dbdata:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
       - 33066:3306
+    healthcheck: 
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-proot"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
